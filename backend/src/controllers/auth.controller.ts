@@ -11,10 +11,11 @@ export class AuthController {
       const result = await authService.register(req.body);
 
       // Set HTTP-only cookie
+      const isProd = process.env.NODE_ENV === "production";
       res.cookie("token", result.token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
+        secure: isProd,
+        sameSite: isProd ? "none" : "lax",
         maxAge: 7 * 24 * 60 * 60 * 1000,
       });
 
@@ -38,10 +39,11 @@ export class AuthController {
       const { email, password } = req.body;
       const result = await authService.login(email, password);
 
+      const isProd = process.env.NODE_ENV === "production";
       res.cookie("token", result.token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
+        secure: isProd,
+        sameSite: isProd ? "none" : "lax",
         maxAge: 7 * 24 * 60 * 60 * 1000,
       });
 

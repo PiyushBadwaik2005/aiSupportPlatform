@@ -1,0 +1,63 @@
+services:
+  # =================================================================
+  # 1. Express Backend (LangChain, Gemini RAG, MongoDB)
+  # =================================================================
+  - type: web
+    name: ai-support-backend
+    runtime: node
+    plan: free
+    region: oregon
+    rootDir: backend
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false # Add your MongoDB Atlas connection URI in Render Dashboard
+      - key: GEMINI_API_KEY
+        sync: false # Add your Gemini API Key from Google AI Studio
+      - key: FRONTEND_URL
+        sync: false # Set to your frontend Render URL, e.g. https://ai-support-frontend.onrender.com
+      - key: JWT_SECRET
+        generateValue: true
+      - key: AUTH_SESSION_SECRET
+        generateValue: true
+      - key: API_KEY_PEPPER
+        generateValue: true
+      - key: GEMINI_MODEL
+        value: gemini-2.0-flash
+      - key: GEMINI_EMBEDDING_MODEL
+        value: text-embedding-004
+      - key: RAG_RETRIEVAL_MODE
+        value: keyword
+      - key: RAG_MIN_RELEVANCE_SCORE
+        value: "0.35"
+      - key: RAG_CHUNK_SIZE
+        value: "800"
+      - key: RAG_CHUNK_OVERLAP
+        value: "120"
+      - key: RAG_MAX_RETRIEVED_CHUNKS
+        value: "5"
+      - key: UPLOAD_MAX_FILE_SIZE_MB
+        value: "10"
+      - key: UPLOAD_STORAGE_PATH
+        value: ./uploads
+
+  # =================================================================
+  # 2. Next.js Frontend (App Router, Tailwind, Recharts)
+  # =================================================================
+  - type: web
+    name: ai-support-frontend
+    runtime: node
+    plan: free
+    region: oregon
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_API_URL
+        sync: false # Set to your backend API URL, e.g. https://ai-support-backend.onrender.com/api

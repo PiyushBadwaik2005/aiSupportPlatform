@@ -18,9 +18,27 @@ export function createApp(): Application {
   );
 
   // CORS Configuration
+  const allowedOrigins = [
+    env.FRONTEND_URL.replace(/\/$/, ""),
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+  ];
+
   app.use(
     cors({
-      origin: [env.FRONTEND_URL, "http://localhost:3000", "http://127.0.0.1:3000"],
+      origin: (requestOrigin, callback) => {
+        // Allow mobile apps, cURL, Postman with no origin header
+        if (!requestOrigin) return callback(null, true);
+        const cleanOrigin = requestOrigin.replace(/\/$/, "");
+        if (
+          allowedOrigins.includes(cleanOrigin) ||
+          cleanOrigin.endsWith(".onrender.com") ||
+          process.env.NODE_ENV !== "production"
+        ) {
+          return callback(null, true);
+        }
+        return callback(null, false);
+      },
       credentials: true,
       methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
       allowedHeaders: ["Content-Type", "Authorization", "x-api-key"],
