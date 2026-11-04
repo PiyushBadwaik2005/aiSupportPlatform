@@ -34,6 +34,7 @@ export default function PublicChatPage() {
   const slug = params?.slug as string;
 
   const [businessName, setBusinessName] = useState<string>("Business Support");
+  const [publicToken, setPublicToken] = useState<string | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [conversationId, setConversationId] = useState<string | null>(null);
@@ -62,6 +63,9 @@ export default function PublicChatPage() {
 
     if (res.success && res.data) {
       setBusinessName(res.data.businessName);
+      if (res.data.publicToken) {
+        setPublicToken(res.data.publicToken);
+      }
       setMessages([
         {
           id: "welcome",
@@ -105,6 +109,7 @@ export default function PublicChatPage() {
           question: query,
           conversationId,
           slug,
+          token: publicToken || undefined,
         }),
       });
 

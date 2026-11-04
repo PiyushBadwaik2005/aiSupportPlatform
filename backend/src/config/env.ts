@@ -17,7 +17,7 @@ const envSchema = z.object({
   API_KEY_PEPPER: z.string().default("dev-api-key-pepper-change-in-production!"),
 
   GEMINI_API_KEY: z.string().optional().default(""),
-  GEMINI_MODEL: z.string().default("gemini-2.0-flash"),
+  GEMINI_MODEL: z.string().default("gemini-flash-latest"),
   GEMINI_EMBEDDING_MODEL: z.string().default("text-embedding-004"),
 
   UPLOAD_MAX_FILE_SIZE_MB: z.coerce.number().default(10),

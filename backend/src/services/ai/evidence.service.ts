@@ -41,7 +41,10 @@ export class EvidenceService implements IEvidenceService {
 
     // If query has specific subject keywords, ensure at least some match in top evidence
     if (queryKeywords.length > 0) {
-      const topEvidence = filteredChunks.slice(0, 3).map((c) => c.content.toLowerCase()).join(" ");
+      const topEvidence = filteredChunks
+        .slice(0, 4)
+        .map((c) => `${c.documentTitle || ""} ${c.content}`.toLowerCase())
+        .join(" ");
       const matchedKeywords = queryKeywords.filter((kw) => topEvidence.includes(kw));
 
       // If less than 25% of distinctive query keywords appear anywhere in top evidence, reject as insufficient

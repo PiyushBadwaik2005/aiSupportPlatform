@@ -29,6 +29,8 @@ export const updateBusinessSettingsSchema = z.object({
 export const chatQuestionSchema = z.object({
   question: z.string().min(1, "Question cannot be empty").max(2000, "Question is too long"),
   conversationId: z.string().optional().nullable(),
+  slug: z.string().optional().nullable(),
+  token: z.string().optional().nullable(),
 });
 
 export const createApiKeySchema = z.object({
