@@ -27,7 +27,7 @@ services:
       - key: API_KEY_PEPPER
         generateValue: true
       - key: GEMINI_MODEL
-        value: gemini-2.0-flash
+        value: gemini-flash-latest
       - key: GEMINI_EMBEDDING_MODEL
         value: text-embedding-004
       - key: RAG_RETRIEVAL_MODE
