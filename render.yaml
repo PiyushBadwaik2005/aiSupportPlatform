@@ -61,3 +61,4 @@ services:
         value: production
       - key: NEXT_PUBLIC_API_URL
         sync: false # Set to your backend API URL, e.g. https://ai-support-backend.onrender.com/api
+
