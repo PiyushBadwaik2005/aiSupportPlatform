@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { apiRequest } from "@/lib/api";
-import { formatDate } from "@/lib/utils";
-import { ConfirmModal } from "@/components/ConfirmModal";
+import { apiRequest } from "../../../lib/api";
+import { formatDate } from "../../../lib/utils";
+import { ConfirmModal } from "../../../components/ConfirmModal";
 import {
   MessageSquare,
   Search,

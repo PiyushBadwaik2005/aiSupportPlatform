@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { apiRequest } from "@/lib/api";
-import { formatDate } from "@/lib/utils";
+import { apiRequest } from "../../../lib/api";
+import { formatDate } from "../../../lib/utils";
 import {
   Activity,
   CheckCircle2,

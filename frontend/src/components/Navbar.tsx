@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { useAuth } from "@/lib/auth-context";
+import { useAuth } from "../lib/auth-context";
 import { Bot, ExternalLink, ShieldCheck, HelpCircle } from "lucide-react";
 
 export function Navbar() {

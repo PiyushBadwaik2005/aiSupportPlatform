@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { apiRequest } from "@/lib/api";
-import { useAuth } from "@/lib/auth-context";
+import { apiRequest } from "../../../lib/api";
+import { useAuth } from "../../../lib/auth-context";
 import {
   Send,
   Bot,

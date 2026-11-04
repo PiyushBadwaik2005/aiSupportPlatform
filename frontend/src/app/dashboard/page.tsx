@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { apiRequest } from "@/lib/api";
-import { formatDate } from "@/lib/utils";
+import { apiRequest } from "../../lib/api";
+import { formatDate } from "../../lib/utils";
 import {
   MessageSquare,
   HelpCircle,

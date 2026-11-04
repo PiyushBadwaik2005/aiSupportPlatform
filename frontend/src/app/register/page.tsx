@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/lib/auth-context";
+import { useAuth } from "../../lib/auth-context";
 import { Bot, Lock, Mail, User, Building, Globe, ArrowRight, AlertCircle } from "lucide-react";
 
 export default function RegisterPage() {

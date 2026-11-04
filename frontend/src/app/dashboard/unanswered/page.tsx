@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { apiRequest } from "@/lib/api";
-import { formatDate } from "@/lib/utils";
+import { apiRequest } from "../../../lib/api";
+import { formatDate } from "../../../lib/utils";
 import {
   HelpCircle,
   CheckCircle2,

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "next/navigation";
-import { apiRequest } from "@/lib/api";
+import { apiRequest } from "../../../lib/api";
 import {
   Send,
   Bot,

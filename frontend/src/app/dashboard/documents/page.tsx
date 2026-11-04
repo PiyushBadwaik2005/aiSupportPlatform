@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { apiRequest } from "@/lib/api";
-import { formatDate, formatBytes } from "@/lib/utils";
-import { ConfirmModal } from "@/components/ConfirmModal";
+import { apiRequest } from "../../../lib/api";
+import { formatDate, formatBytes } from "../../../lib/utils";
+import { ConfirmModal } from "../../../components/ConfirmModal";
 import {
   UploadCloud,
   FileText,
