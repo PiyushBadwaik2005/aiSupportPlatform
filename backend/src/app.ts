@@ -20,6 +20,7 @@ export function createApp(): Application {
   // CORS Configuration
   const allowedOrigins = [
     env.FRONTEND_URL.replace(/\/$/, ""),
+    "https://aisupportplatform-2.onrender.com",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
   ];

@@ -8,7 +8,7 @@ dotenv.config({ path: path.resolve(process.cwd(), ".env") });
 const envSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
   PORT: z.coerce.number().default(5000),
-  FRONTEND_URL: z.string().default("http://localhost:3000"),
+  FRONTEND_URL: z.string().default("https://aisupportplatform-2.onrender.com"),
   MONGODB_URI: z.string().default("mongodb://127.0.0.1:27017/ai_support_platform"),
 
   JWT_SECRET: z.string().default("dev-jwt-secret-key-change-in-production-min32chars!"),

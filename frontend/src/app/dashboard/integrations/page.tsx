@@ -138,7 +138,7 @@ export default function IntegrationsPage() {
     }
   }
 
-  const curlExample = `curl -X POST http://localhost:5000/api/v1/integrations/chat \\
+  const curlExample = `curl -X POST https://aisupportplatform-3.onrender.com/api/v1/integrations/chat \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -146,7 +146,7 @@ export default function IntegrationsPage() {
     "conversationId": null
   }'`;
 
-  const jsExample = `const response = await fetch("http://localhost:5000/api/v1/integrations/chat", {
+  const jsExample = `const response = await fetch("https://aisupportplatform-3.onrender.com/api/v1/integrations/chat", {
   method: "POST",
   headers: {
     "Authorization": "Bearer YOUR_API_KEY",
@@ -164,7 +164,7 @@ console.log("Sources:", data.data.sources);`;
 
   const pythonExample = `import requests
 
-url = "http://localhost:5000/api/v1/integrations/chat"
+url = "https://aisupportplatform-3.onrender.com/api/v1/integrations/chat"
 headers = {
     "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json"
@@ -179,7 +179,7 @@ print(response.json())`;
 
   const embedScript = `<!-- Place before closing </body> tag -->
 <script
-  src="http://localhost:3000/widget.js"
+  src="https://aisupportplatform-2.onrender.com/widget.js"
   data-business="${business?.slug || "your-slug"}"
   async>
 </script>`;

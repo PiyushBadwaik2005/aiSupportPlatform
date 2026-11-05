@@ -19,7 +19,7 @@ services:
       - key: GEMINI_API_KEY
         sync: false # Add your Gemini API Key from Google AI Studio
       - key: FRONTEND_URL
-        sync: false # Set to your frontend Render URL, e.g. https://ai-support-frontend.onrender.com
+        value: https://aisupportplatform-2.onrender.com
       - key: JWT_SECRET
         generateValue: true
       - key: AUTH_SESSION_SECRET
@@ -60,5 +60,5 @@ services:
       - key: NODE_ENV
         value: production
       - key: NEXT_PUBLIC_API_URL
-        sync: false # Set to your backend API URL, e.g. https://ai-support-backend.onrender.com/api
+        value: https://aisupportplatform-3.onrender.com/api
 
