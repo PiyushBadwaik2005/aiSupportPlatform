@@ -9,7 +9,6 @@ import {
   User,
   ShieldCheck,
   Building2,
-  BookOpen,
   Sparkles,
   HelpCircle,
   AlertCircle,
@@ -227,21 +226,6 @@ export default function PublicChatPage() {
                   >
                     <p className="whitespace-pre-wrap">{m.content}</p>
                   </div>
-
-                  {!isUser && m.citations && m.citations.length > 0 && (
-                    <div className="pt-1">
-                      <div className="p-2 bg-slate-100/80 border border-slate-200/80 rounded-lg text-[10px] space-y-1">
-                        <span className="font-semibold text-slate-700 flex items-center gap-1">
-                          <BookOpen className="w-2.5 h-2.5" /> Verified Sources:
-                        </span>
-                        {m.citations.map((c, i) => (
-                          <p key={i} className="text-slate-600 italic">
-                            • {c.documentTitle} (Page {c.page || "1"}): "{c.snippet}"
-                          </p>
-                        ))}
-                      </div>
-                    </div>
-                  )}
                 </div>
               </div>
             );
