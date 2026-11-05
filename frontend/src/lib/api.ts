@@ -1,4 +1,13 @@
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://aisupportplatform-3.onrender.com/api";
+function getApiBaseUrl(): string {
+  let base = (process.env.NEXT_PUBLIC_API_URL || "https://aisupportplatform-3.onrender.com/api").trim();
+  base = base.replace(/\/+$/, "");
+  if (!base.endsWith("/api")) {
+    base = `${base}/api`;
+  }
+  return base;
+}
+
+const API_BASE = getApiBaseUrl();
 
 export interface ApiResponse<T = any> {
   success: boolean;

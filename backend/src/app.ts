@@ -52,8 +52,9 @@ export function createApp(): Application {
   app.use(express.urlencoded({ extended: true, limit: "10mb" }));
   app.use(cookieParser());
 
-  // Mount API Routes
+  // Mount API Routes (supporting both /api and direct root paths)
   app.use("/api", routes);
+  app.use("/", routes);
 
   // 404 Handler
   app.use((_req: Request, res: Response) => {
