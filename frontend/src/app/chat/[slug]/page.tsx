@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "next/navigation";
 import { apiRequest } from "../../../lib/api";
+import { FormattedMessage } from "../../../components/FormattedMessage";
 import {
   Send,
   Bot,
@@ -224,7 +225,7 @@ export default function PublicChatPage() {
                         : "bg-white border border-slate-200 text-slate-800 rounded-tl-xs"
                     }`}
                   >
-                    <p className="whitespace-pre-wrap">{m.content}</p>
+                    <FormattedMessage content={m.content} isUser={isUser} />
                   </div>
                 </div>
               </div>

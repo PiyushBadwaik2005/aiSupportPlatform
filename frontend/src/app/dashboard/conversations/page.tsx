@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { apiRequest } from "../../../lib/api";
 import { formatDate } from "../../../lib/utils";
 import { ConfirmModal } from "../../../components/ConfirmModal";
+import { FormattedMessage } from "../../../components/FormattedMessage";
 import {
   MessageSquare,
   Search,
@@ -298,7 +299,7 @@ export default function ConversationsPage() {
                               : "bg-white border border-slate-200 text-slate-800"
                           }`}
                         >
-                          <p className="whitespace-pre-wrap">{msg.content}</p>
+                          <FormattedMessage content={msg.content} isUser={isUser} />
                         </div>
 
                         {!isUser && (

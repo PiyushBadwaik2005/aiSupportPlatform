@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { apiRequest } from "../../../lib/api";
 import { useAuth } from "../../../lib/auth-context";
+import { FormattedMessage } from "../../../components/FormattedMessage";
 import {
   Send,
   Bot,
@@ -198,7 +199,7 @@ export default function PlaygroundPage() {
                       : "bg-white border border-slate-200 text-slate-800"
                   }`}
                 >
-                  <p className="whitespace-pre-wrap">{msg.content}</p>
+                  <FormattedMessage content={msg.content} isUser={isUser} />
                 </div>
 
                 {!isUser && msg.id !== "msg_init" && (
