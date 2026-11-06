@@ -147,7 +147,7 @@ export default function ApiUsagePage() {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
+          <table className="min-w-[650px] w-full text-left text-xs">
             <thead className="bg-slate-50 border-b border-slate-200 text-slate-500 uppercase tracking-wider font-semibold">
               <tr>
                 <th className="py-3 px-4">Method & Endpoint</th>
@@ -216,7 +216,7 @@ export default function ApiUsagePage() {
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="p-4 border-t border-slate-200 flex items-center justify-between text-xs text-slate-600">
+          <div className="p-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600">
             <span>
               Page {page} of {totalPages}
             </span>

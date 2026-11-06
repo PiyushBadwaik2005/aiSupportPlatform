@@ -89,7 +89,7 @@ export default function SettingsPage() {
 
       <form onSubmit={handleSaveSettings} className="space-y-6">
         {/* Business Profile */}
-        <div className="bg-white p-6 rounded-xl border border-slate-200/80 shadow-xs space-y-4">
+        <div className="bg-white p-4 sm:p-6 rounded-xl border border-slate-200/80 shadow-xs space-y-4">
           <div className="flex items-center gap-2 pb-3 border-b border-slate-100">
             <Building className="w-4 h-4 text-slate-600" />
             <h2 className="text-sm font-semibold text-slate-900">Business Profile</h2>
@@ -133,7 +133,7 @@ export default function SettingsPage() {
         </div>
 
         {/* AI Assistant Grounding & Behavior */}
-        <div className="bg-white p-6 rounded-xl border border-slate-200/80 shadow-xs space-y-4">
+        <div className="bg-white p-4 sm:p-6 rounded-xl border border-slate-200/80 shadow-xs space-y-4">
           <div className="flex items-center gap-2 pb-3 border-b border-slate-100">
             <Sliders className="w-4 h-4 text-slate-600" />
             <h2 className="text-sm font-semibold text-slate-900">AI Personality & Grounding Controls</h2>

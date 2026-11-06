@@ -138,29 +138,29 @@ export default function PlaygroundPage() {
   }
 
   return (
-    <div className="flex flex-col h-[calc(100vh-8rem)] bg-white rounded-xl border border-slate-200/80 shadow-xs overflow-hidden">
+    <div className="flex flex-col h-[calc(100dvh-5.5rem)] sm:h-[calc(100vh-7rem)] bg-white rounded-xl border border-slate-200/80 shadow-xs overflow-hidden">
       {/* Playground Header */}
-      <div className="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50/50">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold">
+      <div className="p-3 sm:p-4 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-50/50 shrink-0">
+        <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+          <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold shrink-0">
             <Bot className="w-4 h-4" />
           </div>
-          <div>
-            <h1 className="text-sm font-semibold text-slate-900 flex items-center gap-2">
-              AI Playground — Grounding Simulator
+          <div className="min-w-0">
+            <h1 className="text-xs sm:text-sm font-semibold text-slate-900 flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <span>AI Playground</span>
               <span className="text-[10px] font-normal px-1.5 py-0.2 rounded-md bg-blue-100 text-blue-800">
                 Mode: {business?.settings?.ragRetrievalMode || "keyword"}
               </span>
             </h1>
-            <p className="text-[11px] text-slate-500">
-              Interactive test console verifying Gemini answers against current knowledge chunks.
+            <p className="text-[11px] text-slate-500 truncate hidden xs:block">
+              Interactive test console verifying Gemini answers against knowledge chunks.
             </p>
           </div>
         </div>
 
         <button
           onClick={resetChat}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-200/70 rounded-lg transition-colors border border-slate-200 bg-white"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-200/70 rounded-lg transition-colors border border-slate-200 bg-white shrink-0 self-start sm:self-auto"
         >
           <RotateCcw className="w-3.5 h-3.5" />
           <span>New Chat</span>
@@ -168,7 +168,7 @@ export default function PlaygroundPage() {
       </div>
 
       {/* Message Stream */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-5 bg-slate-50/30">
+      <div className="flex-1 overflow-y-auto p-3 sm:p-6 space-y-4 sm:space-y-5 bg-slate-50/30">
         {messages.map((msg) => {
           const isUser = msg.role === "user";
           const hasSources = msg.citations && msg.citations.length > 0;
@@ -177,7 +177,7 @@ export default function PlaygroundPage() {
           return (
             <div
               key={msg.id}
-              className={`flex items-start gap-3 max-w-3xl ${
+              className={`flex items-start gap-2 sm:gap-3 max-w-[88%] sm:max-w-2xl ${
                 isUser ? "ml-auto flex-row-reverse" : "mr-auto"
               }`}
             >
@@ -191,9 +191,9 @@ export default function PlaygroundPage() {
                 {isUser ? <User className="w-3.5 h-3.5" /> : <Bot className="w-3.5 h-3.5" />}
               </div>
 
-              <div className="space-y-1.5 overflow-hidden">
+              <div className="space-y-1.5 min-w-0 break-words">
                 <div
-                  className={`p-4 rounded-xl text-xs leading-relaxed shadow-xs ${
+                  className={`p-3 sm:p-4 rounded-xl text-xs leading-relaxed shadow-xs ${
                     isUser
                       ? "bg-blue-600 text-white"
                       : "bg-white border border-slate-200 text-slate-800"
@@ -205,14 +205,14 @@ export default function PlaygroundPage() {
                 {!isUser && msg.id !== "msg_init" && (
                   <div className="flex flex-col gap-1.5 pt-0.5">
                     {/* Status Badge */}
-                    <div className="flex items-center gap-2 text-[11px]">
+                    <div className="flex flex-wrap items-center gap-2 text-[11px]">
                       {msg.isAnswered ? (
                         <span className="inline-flex items-center gap-1 text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md font-medium border border-emerald-200/60">
                           <ShieldCheck className="w-3 h-3" /> Grounded in Knowledge Base
                         </span>
                       ) : (
                         <span className="inline-flex items-center gap-1 text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md font-medium border border-amber-200/60">
-                          <HelpCircle className="w-3 h-3" /> Controlled Fallback (Recorded in Unanswered)
+                          <HelpCircle className="w-3 h-3" /> Controlled Fallback
                         </span>
                       )}
 
@@ -271,13 +271,13 @@ export default function PlaygroundPage() {
         })}
 
         {isLoading && (
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <div className="w-7 h-7 rounded-lg bg-slate-800 text-white flex items-center justify-center shrink-0">
               <Bot className="w-3.5 h-3.5" />
             </div>
-            <div className="p-3 bg-white border border-slate-200 rounded-xl flex items-center gap-2 text-xs text-slate-500 shadow-xs">
-              <Sparkles className="w-3.5 h-3.5 text-blue-600 animate-spin" />
-              <span>Searching knowledge chunks & generating grounded answer...</span>
+            <div className="p-2.5 sm:p-3 bg-white border border-slate-200 rounded-xl flex items-center gap-2 text-xs text-slate-500 shadow-xs">
+              <Sparkles className="w-3.5 h-3.5 text-blue-600 animate-spin shrink-0" />
+              <span>Generating grounded answer...</span>
             </div>
           </div>
         )}
@@ -293,26 +293,26 @@ export default function PlaygroundPage() {
       </div>
 
       {/* Input Bar */}
-      <div className="p-4 border-t border-slate-200 bg-white">
-        <form onSubmit={handleSendMessage} className="flex items-center gap-3">
+      <div className="p-2.5 sm:p-4 border-t border-slate-200 bg-white shrink-0">
+        <form onSubmit={handleSendMessage} className="flex items-center gap-2 sm:gap-3">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             disabled={isLoading}
-            placeholder="Ask a customer question (e.g., 'What is your refund policy?')..."
-            className="flex-1 px-4 py-2.5 text-xs border border-slate-300 rounded-xl focus:outline-hidden focus:ring-2 focus:ring-blue-500 bg-white"
+            placeholder="Ask a question (e.g. 'What is your refund policy?')..."
+            className="flex-1 px-3 sm:px-4 py-2 sm:py-2.5 text-xs border border-slate-300 rounded-xl focus:outline-hidden focus:ring-2 focus:ring-blue-500 bg-white min-w-0"
           />
           <button
             type="submit"
             disabled={isLoading || !input.trim()}
-            className="px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold flex items-center gap-2 transition-colors disabled:opacity-40 shadow-xs"
+            className="px-3.5 sm:px-4 py-2 sm:py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold flex items-center gap-1.5 sm:gap-2 transition-colors disabled:opacity-40 shadow-xs shrink-0"
           >
             <Send className="w-3.5 h-3.5" />
-            <span>Send</span>
+            <span className="hidden xs:inline">Send</span>
           </button>
         </form>
-        <p className="text-[10px] text-slate-400 mt-2 text-center">
+        <p className="text-[10px] text-slate-400 mt-1.5 sm:mt-2 text-center truncate">
           Answers are strictly bounded to verified document excerpts. Unknown questions trigger safe fallback.
         </p>
       </div>

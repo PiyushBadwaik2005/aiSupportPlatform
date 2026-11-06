@@ -46,8 +46,8 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col justify-center items-center p-4 font-sans">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl border border-slate-200/80 p-8 space-y-6">
+    <div className="min-h-screen bg-slate-50 flex flex-col justify-center items-center p-3 sm:p-4 font-sans">
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl border border-slate-200/80 p-5 sm:p-8 space-y-5 sm:space-y-6">
         {/* Header */}
         <div className="text-center space-y-2">
           <Link href="/" className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-blue-600 text-white font-bold mx-auto shadow-xs">

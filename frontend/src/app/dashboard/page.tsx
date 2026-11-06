@@ -185,10 +185,10 @@ export default function DashboardOverviewPage() {
       {/* Analytics Chart & Document Readiness Summary */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Weekly Trend Chart */}
-        <div className="lg:col-span-2 bg-white p-6 rounded-xl border border-slate-200/80 shadow-xs">
-          <div className="flex items-center justify-between mb-4">
+        <div className="lg:col-span-2 bg-white p-4 sm:p-6 rounded-xl border border-slate-200/80 shadow-xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div>
-              <h2 className="text-base font-semibold text-slate-900">Activity & Grounding Trends</h2>
+              <h2 className="text-sm sm:text-base font-semibold text-slate-900">Activity & Grounding Trends</h2>
               <p className="text-xs text-slate-500">Answered vs Unsupported questions over last 7 days</p>
             </div>
             <div className="flex items-center gap-4 text-xs">
@@ -235,7 +235,7 @@ export default function DashboardOverviewPage() {
         </div>
 
         {/* System & Processing Status */}
-        <div className="bg-white p-6 rounded-xl border border-slate-200/80 shadow-xs flex flex-col justify-between">
+        <div className="bg-white p-4 sm:p-6 rounded-xl border border-slate-200/80 shadow-xs flex flex-col justify-between">
           <div>
             <h2 className="text-base font-semibold text-slate-900 mb-1">Knowledge Ingestion Status</h2>
             <p className="text-xs text-slate-500 mb-5">Indexing pipeline health</p>
@@ -293,7 +293,7 @@ export default function DashboardOverviewPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Recent Conversations */}
         <div className="bg-white rounded-xl border border-slate-200/80 shadow-xs overflow-hidden">
-          <div className="p-5 border-b border-slate-100 flex items-center justify-between">
+          <div className="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between">
             <h2 className="text-sm font-semibold text-slate-900">Recent Conversations</h2>
             <Link href="/dashboard/conversations" className="text-xs text-blue-600 hover:underline font-medium">
               View all
@@ -307,21 +307,21 @@ export default function DashboardOverviewPage() {
               </div>
             ) : (
               data.recentConversations.map((c) => (
-                <div key={c._id} className="p-4 hover:bg-slate-50 transition-colors flex items-center justify-between">
-                  <div className="flex items-center gap-3 overflow-hidden">
+                <div key={c._id} className="p-3 sm:p-4 hover:bg-slate-50 transition-colors flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2.5 sm:gap-3 overflow-hidden min-w-0">
                     <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
                       <MessageSquare className="w-3.5 h-3.5" />
                     </div>
-                    <div className="overflow-hidden">
+                    <div className="overflow-hidden min-w-0">
                       <p className="text-xs font-medium text-slate-800 truncate">{c.title || "Customer Inquiry"}</p>
                       <p className="text-[11px] text-slate-400">{formatDate(c.updatedAt)}</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-[11px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-medium capitalize">
+                  <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                    <span className="text-[10px] sm:text-[11px] px-1.5 sm:px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-medium capitalize">
                       {c.source}
                     </span>
-                    <span className="text-[11px] text-slate-400 font-mono">
+                    <span className="text-[10px] sm:text-[11px] text-slate-400 font-mono hidden xs:inline">
                       {c.messageCount} msgs
                     </span>
                   </div>
@@ -333,7 +333,7 @@ export default function DashboardOverviewPage() {
 
         {/* Recent Unanswered Questions */}
         <div className="bg-white rounded-xl border border-slate-200/80 shadow-xs overflow-hidden">
-          <div className="p-5 border-b border-slate-100 flex items-center justify-between">
+          <div className="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <h2 className="text-sm font-semibold text-slate-900">Unanswered Questions</h2>
               {data.recentUnanswered.length > 0 && (
@@ -354,12 +354,12 @@ export default function DashboardOverviewPage() {
               </div>
             ) : (
               data.recentUnanswered.map((u) => (
-                <div key={u._id} className="p-4 hover:bg-slate-50 transition-colors flex items-center justify-between">
-                  <div className="flex items-center gap-3 overflow-hidden">
+                <div key={u._id} className="p-3 sm:p-4 hover:bg-slate-50 transition-colors flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2.5 sm:gap-3 overflow-hidden min-w-0">
                     <div className="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
                       <HelpCircle className="w-3.5 h-3.5" />
                     </div>
-                    <div className="overflow-hidden">
+                    <div className="overflow-hidden min-w-0">
                       <p className="text-xs font-medium text-slate-800 truncate">{u.question}</p>
                       <p className="text-[11px] text-slate-400">{formatDate(u.createdAt)}</p>
                     </div>

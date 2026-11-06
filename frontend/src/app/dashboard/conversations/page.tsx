@@ -126,7 +126,7 @@ export default function ConversationsPage() {
       {/* Main List Table */}
       <div className="bg-white rounded-xl border border-slate-200/80 shadow-xs overflow-hidden">
         {/* Filter Bar */}
-        <div className="p-4 border-b border-slate-200 flex items-center justify-between">
+        <div className="p-3.5 sm:p-4 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <select
               value={sourceFilter}
@@ -150,7 +150,7 @@ export default function ConversationsPage() {
 
         {/* Table */}
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
+          <table className="min-w-[600px] w-full text-left text-xs">
             <thead className="bg-slate-50 border-b border-slate-200 text-slate-500 uppercase tracking-wider font-semibold">
               <tr>
                 <th className="py-3 px-4">Initial Question / Topic</th>
@@ -223,7 +223,7 @@ export default function ConversationsPage() {
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="p-4 border-t border-slate-200 flex items-center justify-between text-xs text-slate-600">
+          <div className="p-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600">
             <span>
               Page {page} of {totalPages}
             </span>
@@ -249,8 +249,8 @@ export default function ConversationsPage() {
 
       {/* Conversation Detail Modal */}
       {activeConv && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs">
-          <div className="bg-white rounded-xl shadow-xl border border-slate-200 w-full max-w-2xl max-h-[85vh] flex flex-col overflow-hidden">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/40 backdrop-blur-xs">
+          <div className="bg-white rounded-xl shadow-xl border border-slate-200 w-full max-w-2xl max-h-[90vh] sm:max-h-[85vh] flex flex-col overflow-hidden">
             <div className="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
               <div className="overflow-hidden">
                 <h3 className="font-semibold text-slate-900 text-sm truncate">
@@ -268,7 +268,7 @@ export default function ConversationsPage() {
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-5 space-y-4 bg-slate-50/30">
+            <div className="flex-1 overflow-y-auto p-3.5 sm:p-5 space-y-4 bg-slate-50/30">
               {isLoadingMessages ? (
                 <div className="text-center py-10 text-xs text-slate-400">Loading messages...</div>
               ) : convMessages.length === 0 ? (
@@ -279,7 +279,7 @@ export default function ConversationsPage() {
                   return (
                     <div
                       key={msg._id}
-                      className={`flex items-start gap-3 max-w-xl ${
+                      className={`flex items-start gap-2.5 sm:gap-3 max-w-[88%] sm:max-w-xl ${
                         isUser ? "ml-auto flex-row-reverse" : "mr-auto"
                       }`}
                     >
@@ -291,7 +291,7 @@ export default function ConversationsPage() {
                         {isUser ? <User className="w-3 h-3" /> : <Bot className="w-3 h-3" />}
                       </div>
 
-                      <div className="space-y-1">
+                      <div className="space-y-1 min-w-0 break-words">
                         <div
                           className={`p-3 rounded-xl text-xs leading-relaxed ${
                             isUser

@@ -178,20 +178,20 @@ export default function PublicChatPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-100 flex flex-col justify-center items-center p-3 sm:p-6 font-sans">
-      <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl border border-slate-200/90 flex flex-col h-[90vh] overflow-hidden">
+    <div className="h-screen sm:h-auto sm:min-h-screen bg-slate-100 flex flex-col justify-center items-center p-0 sm:p-4 md:p-6 font-sans">
+      <div className="w-full max-w-2xl bg-white rounded-none sm:rounded-2xl shadow-xl sm:border border-slate-200/90 flex flex-col h-full sm:h-[90vh] overflow-hidden">
         {/* Widget Header */}
-        <div className="px-5 py-4 bg-slate-900 text-white flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center font-bold shadow-xs">
+        <div className="px-4 py-3 sm:px-5 sm:py-4 bg-slate-900 text-white flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center font-bold shadow-xs shrink-0">
               <Bot className="w-5 h-5 text-white" />
             </div>
-            <div>
-              <h2 className="text-sm font-bold text-white flex items-center gap-1.5">
+            <div className="min-w-0">
+              <h2 className="text-sm font-bold text-white flex items-center gap-1.5 truncate">
                 {businessName}
               </h2>
               <span className="text-[11px] text-emerald-400 flex items-center gap-1 font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
                 Verified AI Customer Support
               </span>
             </div>
@@ -199,13 +199,13 @@ export default function PublicChatPage() {
         </div>
 
         {/* Message Stream */}
-        <div className="flex-1 overflow-y-auto p-5 space-y-4 bg-slate-50/50">
+        <div className="flex-1 overflow-y-auto p-3.5 sm:p-5 space-y-4 bg-slate-50/50">
           {messages.map((m) => {
             const isUser = m.role === "user";
             return (
               <div
                 key={m.id}
-                className={`flex items-start gap-2.5 max-w-xl ${
+                className={`flex items-start gap-2 sm:gap-2.5 max-w-[88%] sm:max-w-xl ${
                   isUser ? "ml-auto flex-row-reverse" : "mr-auto"
                 }`}
               >
@@ -217,9 +217,9 @@ export default function PublicChatPage() {
                   {isUser ? <User className="w-3.5 h-3.5" /> : <Bot className="w-3.5 h-3.5" />}
                 </div>
 
-                <div className="space-y-1">
+                <div className="space-y-1 min-w-0 break-words">
                   <div
-                    className={`p-3.5 rounded-2xl text-xs leading-relaxed shadow-2xs ${
+                    className={`p-3 sm:p-3.5 rounded-2xl text-xs leading-relaxed shadow-2xs ${
                       isUser
                         ? "bg-blue-600 text-white rounded-tr-xs"
                         : "bg-white border border-slate-200 text-slate-800 rounded-tl-xs"
@@ -243,26 +243,26 @@ export default function PublicChatPage() {
         </div>
 
         {/* Input Bar */}
-        <div className="p-3.5 border-t border-slate-200 bg-white">
+        <div className="p-2.5 sm:p-3.5 border-t border-slate-200 bg-white shrink-0">
           <form onSubmit={handleSend} className="flex items-center gap-2">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask a question about our policies, pricing, returns..."
-              className="flex-1 px-4 py-2.5 text-xs border border-slate-300 rounded-xl focus:outline-hidden focus:ring-2 focus:ring-blue-500"
+              placeholder="Ask a question about policies, pricing, returns..."
+              className="flex-1 px-3 sm:px-4 py-2 sm:py-2.5 text-xs border border-slate-300 rounded-xl focus:outline-hidden focus:ring-2 focus:ring-blue-500 min-w-0"
             />
             <button
               type="submit"
               disabled={isLoading || !input.trim()}
-              className="px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-xl disabled:opacity-40 transition-colors flex items-center gap-1.5 shadow-xs"
+              className="px-3.5 sm:px-4 py-2 sm:py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-xl disabled:opacity-40 transition-colors flex items-center gap-1.5 shadow-xs shrink-0"
             >
               <Send className="w-3.5 h-3.5" />
             </button>
           </form>
-          <div className="mt-2 text-center text-[10px] text-slate-400 flex items-center justify-center gap-1">
-            <ShieldCheck className="w-3 h-3 text-emerald-500" />
-            <span>Grounded Answers powered by AI Support Platform</span>
+          <div className="mt-1.5 sm:mt-2 text-center text-[10px] text-slate-400 flex items-center justify-center gap-1">
+            <ShieldCheck className="w-3 h-3 text-emerald-500 shrink-0" />
+            <span className="truncate">Grounded Answers powered by AI Support Platform</span>
           </div>
         </div>
       </div>
